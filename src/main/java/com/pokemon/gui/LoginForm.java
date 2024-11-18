@@ -51,7 +51,7 @@ public class LoginForm extends JFrame {
         add(messageLabel, BorderLayout.NORTH);
     }
 
-    private class LoginAction implements ActionListener {
+    protected class LoginAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             String username = usernameField.getText();
@@ -68,9 +68,8 @@ public class LoginForm extends JFrame {
             }
         }
 
-        private boolean authenticate(String username, String password) {
+        protected boolean authenticate(String username, String password) {
             try {
-                LoginFormDAO loginFormDAO = new LoginFormDAOImp();
                 List<Login> users = loginFormDAO.readAll();
 
                 for (Login user : users) {
